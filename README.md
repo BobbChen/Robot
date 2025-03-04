@@ -1,2 +1,3 @@
 # Robot
 AI Application
+flutter_launcher_icons.sh用于打包Macos桌面端的DMG格式安装包
