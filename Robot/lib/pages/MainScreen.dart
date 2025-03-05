@@ -24,7 +24,9 @@ class MainScreen extends HookConsumerWidget {
       ];
       List<NavigationRailDestination> sessionDestinations = sessions
           .map((session) => NavigationRailDestination(
-              icon: Icon(Icons.book), label: Text(session.title)))
+              icon: Icon(Icons.book),
+              label: Text(session.title,
+                  overflow: TextOverflow.ellipsis, maxLines: 1)))
           .toList();
       return destinations + sessionDestinations;
     }
@@ -58,17 +60,19 @@ class MainScreen extends HookConsumerWidget {
         body: Row(
           children: [
             SafeArea(
-              child: NavigationRail(
-                  labelType: NavigationRailLabelType.none,
-                  destinations: _getDestinations(),
-                  onDestinationSelected: (index) {
-                    print("点击的index:$index");
-                    ref.read(selectedIndexProvider.notifier).state = index;
-                    Future.microtask(
-                        () => ref.read(refreshProvider.notifier).state = false);
-                  },
-                  extended: constraints.maxWidth >= 600,
-                  selectedIndex: ref.watch(selectedIndexProvider)),
+              child: SizedBox(
+                width: 200,
+                child: NavigationRail(
+                    labelType: NavigationRailLabelType.none,
+                    destinations: _getDestinations(),
+                    onDestinationSelected: (index) {
+                      ref.read(selectedIndexProvider.notifier).state = index;
+                      Future.microtask(() =>
+                          ref.read(refreshProvider.notifier).state = false);
+                    },
+                    extended: true,
+                    selectedIndex: ref.watch(selectedIndexProvider)),
+              ),
             ),
             Expanded(child: selectedPage)
           ],
