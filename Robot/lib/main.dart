@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
@@ -62,15 +61,4 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     );
   }
-}
-
-void getScreenSize() {
-  final physicalSize = window.physicalSize;
-  final pixelRatio = window.devicePixelRatio;
-
-  final screenWidth = physicalSize.width / pixelRatio;
-  final screenHeight = physicalSize.height / pixelRatio;
-  print('屏幕宽度: $physicalSize.width, 高度: $physicalSize.height');
-
-  print('屏幕宽度: $screenWidth, 高度: $screenHeight');
 }
