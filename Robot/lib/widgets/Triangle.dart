@@ -4,7 +4,7 @@ class Triangle extends CustomPainter {
   final Color bgColor;
 
   Triangle(this.bgColor);
-
+  // 绘制会话列表消息气泡的三角
   @override
   void paint(Canvas canvas, Size size) {
     // TODO: implement paint
@@ -21,5 +21,4 @@ class Triangle extends CustomPainter {
     // TODO: implement shouldRepaint
     return false;
   }
-  
 }
