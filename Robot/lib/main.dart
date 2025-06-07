@@ -41,7 +41,6 @@ void main() async {
     }
     final logFile = File('${directory.path}/db_init_error.log');
     await logFile.writeAsString('数据库初始化失败: $e');
-    print('数据库初始化失败');
   }
   runApp(const ProviderScope(child: MyApp()));
 }

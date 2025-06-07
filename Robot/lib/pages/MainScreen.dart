@@ -33,12 +33,10 @@ class MainScreen extends HookConsumerWidget {
 
     final refreshDestination = ref.watch(refreshProvider);
     if (refreshDestination) {
-      print("是刷新信号！！！！！！");
       selectedIndex = sessions.length;
     }
 
     Widget selectedPage;
-    print("选中项的index为:$selectedIndex,历史会话，总个数:${sessions.length}");
     switch (selectedIndex) {
       case 0:
         selectedPage = ChatScreen(session: null);
@@ -47,8 +45,6 @@ class MainScreen extends HookConsumerWidget {
         break;
       default:
         Session session = sessions[selectedIndex - 1];
-        print(
-            "选中历史会话，总个数:${sessions.length},传入session为:${session.title},id为:${session.id}");
         final state = ref.watch(sessionNotifierProvider);
         state.activeSession = session.copyWith(id: session.id);
         selectedPage = ChatScreen(session: session);
