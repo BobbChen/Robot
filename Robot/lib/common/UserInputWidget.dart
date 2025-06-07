@@ -48,7 +48,6 @@ class UserInputWidget extends HookConsumerWidget {
 
     // 请求deepseek接口
     deepSeekApi.getData(editController.text, (text) {
-      print('接收到数据:$text');
       final message = Message(
           content: text, uuid: newMessageUuid, isFromUser: false, sessionId: 0);
       ref
@@ -56,7 +55,6 @@ class UserInputWidget extends HookConsumerWidget {
           .addMessage(message.copyWith(sessionId: sessionId));
     }, () {
       ref.read(chatUiStateNotifierProvider.notifier).setRequestState(false);
-      print('完成');
     });
     editController.clear();
   }

@@ -24,7 +24,6 @@ class MessageList extends HookConsumerWidget {
     final listViewController = useScrollController();
 
     Future<List<Message>> getMessages() async {
-      print("开始从数据库加载，目标sessionId:${session?.id}");
       return await db.messageDao.findMessageBySessionId(session?.id ?? 0);
     }
 

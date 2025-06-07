@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +41,6 @@ void main() async {
     }
     final logFile = File('${directory.path}/db_init_error.log');
     await logFile.writeAsString('数据库初始化失败: $e');
-    print('数据库初始化失败');
   }
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -62,15 +60,4 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     );
   }
-}
-
-void getScreenSize() {
-  final physicalSize = window.physicalSize;
-  final pixelRatio = window.devicePixelRatio;
-
-  final screenWidth = physicalSize.width / pixelRatio;
-  final screenHeight = physicalSize.height / pixelRatio;
-  print('屏幕宽度: $physicalSize.width, 高度: $physicalSize.height');
-
-  print('屏幕宽度: $screenWidth, 高度: $screenHeight');
 }
